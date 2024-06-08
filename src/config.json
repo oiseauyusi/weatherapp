@@ -1,0 +1,9 @@
+{
+    "wheather-api": {
+      "api-key": "cde251a6c7734772c29623dbfb2586ef",
+      "url": "https://api.openweathermap.org/data/2.5/weather"
+    },
+    "forecast-api": {
+      "url": "https://api.openweathermap.org/data/2.5/forecast"
+    }
+  }

@@ -1,0 +1,31 @@
+.city-name-code-temp {
+    min-width: 525px;
+    display: flex;
+    align-items: center;
+    gap: 1;
+}
+
+.box-description-date {
+    width: 525px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    /* justify-content: flex-end; */
+}
+
+.error {
+    font-size: medium;
+    color: red;
+    text-align: center;
+}
+
+.description-date {
+    font-size: medium;
+    color: #6b6f72;
+    text-transform: capitalize;
+}
+
+.forecast-title {
+    text-align: center;
+    padding-top: 20px;
+}

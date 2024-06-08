@@ -1,0 +1,22 @@
+
+.paper {
+    background-color: #ffffff;
+    border: 1px solid #000;
+    padding: 0px 40px 40px 40px;
+    margin-top: 40px;
+}
+
+.search-bar-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 650px;
+    margin: auto;
+}
+
+.title {
+    text-align: center;
+}
+
+
+
