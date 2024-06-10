@@ -11,3 +11,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// TODO: Make search bar to predict user input and give him hints on available cities
+// TODO: Add sorting logic to favorities
