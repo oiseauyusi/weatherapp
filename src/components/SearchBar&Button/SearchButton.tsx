@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 
-
+// TODO: What does "props" mean?
+// FIXME: You want to keep interfaces in separate files or above the functions that implemeents it? Be consistent
 /**
  * Props for the SearchButton component.
  *
@@ -19,14 +20,11 @@ interface SearchButtonProps {
  * @returns A clickable button 
  */
 const SearchButton: React.FC<SearchButtonProps> = ({ fetchWeather }) => {
+
+    const sxButton = { height: '40px' }
+
     return (
-        <Button
-            variant="contained"
-            onClick={fetchWeather}
-            sx={{ height: '40px' }}
-        >
-            Search
-        </Button>
+        <Button variant="contained" onClick={fetchWeather} sx={sxButton}> Search </Button>
     );
 };
 

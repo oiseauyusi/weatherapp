@@ -36,6 +36,7 @@ export async function getForecastDetails(city: string) {
   }
 }
 
+// FIXME: make the forecast days number adjustable variable - what if i want to display 7 days?
 /**
  * Forecast component displays the weather forecast for 5 days.
  * 

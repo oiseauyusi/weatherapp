@@ -1,5 +1,6 @@
 import React from 'react';
 
+// FIXME: BE CONSISTENT
 /**
  * Props for the WeatherIcon component.
  *
