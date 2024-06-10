@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './styles.css';
 import { Typography, Paper, Box, Button } from '@mui/material';
-import { EmptyCityError, WheatherApiDead } from './CustomErrors';
+import { EmptyCityError } from './CustomErrors';
 import { WeatherData } from './Weather/WeatherInterface';
 import { ForecastData } from './Forecast/ForecastInterface';
 import { WeatherDisplay, getWhetherDetails } from './Weather/WeatherDisplay';
@@ -73,9 +72,7 @@ const Weather: React.FC = () => {
 
     return (
         <Paper className='paper'>
-            <Button variant="contained" onClick={toggleFavorites}>
-                {isFavoritesVisible ? "Hide Favorites" : "Show Favorites"}
-            </Button>
+            <Button variant="contained" onClick={toggleFavorites}>{isFavoritesVisible ? "Hide Favorites" : "Show Favorites"}</Button>
             <Favorites isVisible={isFavoritesVisible} savedCities={savedCities} onDeleteCity={handleDeleteCity}/>
             <Typography variant="h2" className='title'>Weather App</Typography>
             <Box className="search-bar-button">

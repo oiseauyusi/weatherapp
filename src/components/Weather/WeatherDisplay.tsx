@@ -21,6 +21,7 @@ export async function getWhetherDetails(city: string) {
 
     try {
         console.log(`Getting whether information for city: '${city}'`)
+        // FIXME: Change response when status code returned is >= 500 then return that wheather api is not working correctly when 400<=status<500 return correct responses (404, 400 etc)
         const response = await axios.get(`${weatherUrl}?q=${city}&appid=${apiKey}&units=metric`);
         console.log("status od response jest traki jak po prawej ---->", response.status)
         return response.data
