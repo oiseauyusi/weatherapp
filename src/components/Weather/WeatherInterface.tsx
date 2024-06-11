@@ -19,8 +19,17 @@ export interface WeatherData {
 }
 
 export interface WeatherDisplayProps {
-    data: WeatherData | null;
+    data: any;
     error: string | null;
     currentDate: string;
-    onSaveCity: (cityData: WeatherData) => void;
+    onSaveCity: (cityData: any) => void;
+}
+
+/**
+ * Props for the WeatherIcon component.
+ *
+ * @property icon - The icon code representing the weather condition.
+ */
+export interface WeatherIconProps {
+    icon: string | undefined;
 }

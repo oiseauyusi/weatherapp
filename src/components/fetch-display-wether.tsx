@@ -6,8 +6,8 @@ import { WeatherData } from './Weather/WeatherInterface';
 import { ForecastData } from './Forecast/ForecastInterface';
 import { WeatherDisplay, getWhetherDetails } from './Weather/WeatherDisplay';
 import { Forecast, getForecastDetails } from './Forecast/5DaysForecast';
-import SearchBar from './SearchBar&Button/SearchBar';
-import SearchButton from './SearchBar&Button/SearchButton';
+import SearchBar from './SearchBar/SearchBar';
+import SearchButton from './SearchBar/SearchButton';
 import Favorites from './Favourites/EjectButton';
 
 

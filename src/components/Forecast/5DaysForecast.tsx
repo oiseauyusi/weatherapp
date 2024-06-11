@@ -31,7 +31,7 @@ export async function getForecastDetails(city: string) {
       const processedData: ForecastData[] = Object.values(forecastMap);
       return processedData.slice(0, 5);
   } catch (err) {
-      console.error('Error fetching the forecast data:', err);                    //nowe
+      console.error('Error fetching the forecast data:', err);
       throw err;
   }
 }

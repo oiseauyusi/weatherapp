@@ -1,19 +1,21 @@
 import React from 'react';
-import './Favourites.css';
+import './Favorites.css';
 import { Box, Typography, Button } from '@mui/material';
-import { WeatherData } from '../Weather/WeatherInterface';
-import ClearIcon from '@mui/icons-material/Clear';
+import { FavoritesProps } from './FavoritesInterface';
+import { DeleteCityButton } from './DeleteCityButton';
+
 
 // FIXME: Be consistent if interface are in eseparate modules keep it in separate modules
-interface FavoritesProps {
-    isVisible: boolean;
-    savedCities: WeatherData[];
-    onDeleteCity: (cityName: string) => void;
-}
-
+// Moved
 
 const Favorites: React.FC<FavoritesProps> = ({ isVisible, savedCities, onDeleteCity }) => {
     // TODO: Check good practices about global variables with default values. Eg: const defaultFavorite: string = ""   <Box className={`favorites-card ${isVisible ? 'visible' : defaultFavorite}`}>
+    // https://www.geeksforgeeks.org/why-to-avoid-global-variables-in-javascript/
+    // https://medium.com/@gecno/best-practices-for-initialising-variables-in-javascript-a26844455f8e
+    // 
+    // Is it good practice to use global variables in JavaScript?
+    // Still, it is recommended to avoid the usage of global variables as much as possible and instead use function scoped or block-scoped variables (local scoped).
+
     // After checking remove TODO and add comment with best practices or refactor
     return (
         <Box className={`favorites-card ${isVisible ? 'visible' : ''}`}>
@@ -32,12 +34,7 @@ const Favorites: React.FC<FavoritesProps> = ({ isVisible, savedCities, onDeleteC
                             <Typography variant="body1">Description: {cityData.weather[0].description}</Typography>
                             <Typography variant="body1">Date: {cityData.savedDate}</Typography>
                         </Box>
-                        <Button  
-                            color="error"
-                            onClick={() => onDeleteCity(cityData.name)}
-                        >
-                            <ClearIcon/>
-                        </Button>
+                        <DeleteCityButton onClick={() => onDeleteCity(cityData.name)}/>
                     </Box>
                 </Box>
             ))}

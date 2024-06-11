@@ -1,14 +1,8 @@
 import React from 'react';
+import { WeatherIconProps } from './WeatherInterface';
 
 // FIXME: BE CONSISTENT
-/**
- * Props for the WeatherIcon component.
- *
- * @property icon - The icon code representing the weather condition.
- */
-interface WeatherIconProps {
-    icon: string | undefined;
-}
+// Moved
 
 /**
  * WeatherIcon component renders an image of the weather icon based on the provided icon code.

@@ -1,0 +1,41 @@
+.favorites-card {
+    position: fixed;
+    top: 0;
+    left: -500px;
+    width: 350px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.856);
+    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px 0px 0px 20px;
+    transition: left 0.4s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    
+}
+
+.favorites-card.visible {
+    left: 0;
+}
+  
+.favorites-card .title {
+    margin-top: 0;
+}
+  
+.favorites-card .city-info {
+    margin-bottom: 15px;
+}
+
+.favorites-card .city-info .city-name {
+    font-weight: bold;
+}
+
+.favorites-card .city-info .city-details {
+    font-size: 14px;
+    color: #555;
+}
+
+.city-details {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+}

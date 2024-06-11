@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import React from 'react';
+import { Box, Typography } from '@mui/material';
 import { WeatherDisplayProps } from './WeatherInterface';
 import './WeatherDisplay.css'
 import WeatherIcon from './WeatherIcon';
-import StarIcon from '@mui/icons-material/Star';
 import axios from 'axios';
 import { EmptyCityError, WheatherApiDead } from '../CustomErrors';
+import { SaveCityButton } from '../Favourites/SaveCityButton';
 
 
 const config = require("../../config.json");
@@ -43,14 +43,7 @@ export const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ data, error, cur
             {error && (<Typography className='error'>{error}</Typography>)}
             {data && (
                 <Box>
-                    <Button                                             
-                        color='warning'
-                        variant="contained"
-                        sx={{ height: '40px' }}
-                        onClick={handleSaveCity}
-                        >
-                        <StarIcon/>
-                    </Button>
+                    <SaveCityButton onClick={handleSaveCity} />
                     <Box display="flex">
                         <Box className="city-name-code-temp">
                             <WeatherIcon icon={data.weather[0]?.icon} />
