@@ -20,11 +20,12 @@ const Weather: React.FC = () => {
     const [isFavoritesVisible, setIsFavoritesVisible] = useState(false);
     const [savedCities, setSavedCities] = useState<WeatherData[]>([]);
 
+    const numberOfForecastDays = 5;
 
     const fetchWeather = async () => {
         try {
             const wheatherDetails = await getWhetherDetails(city)
-            const forecastDetails = await getForecastDetails(city);
+            const forecastDetails = await getForecastDetails(city, numberOfForecastDays);
             //console.log(wheatherDetails)
             setWeatherData(wheatherDetails);
             setForecastData(forecastDetails);

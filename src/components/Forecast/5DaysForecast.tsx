@@ -10,15 +10,16 @@ const config = require("../../config.json");
 const apiKey: string = config["wheather-api"]["api-key"];
 const forecastUrl = config["forecast-api"]["url"];
 
-export async function getForecastDetails(city: string) {
+export async function getForecastDetails(city: string, days: number = 5) {
   try {
       const response = await axios.get(`${forecastUrl}?q=${city}&appid=${apiKey}&units=metric`);
       const data = response.data;
       const forecastMap: { [key: string]: ForecastData } = {};
+      const currentDate = new Date().toISOString().split('T')[0];
 
       data.list.forEach((item: any) => {
           const date = item.dt_txt.split(' ')[0];
-          if (!forecastMap[date]) {
+          if (!forecastMap[date] && date !== currentDate) {
               forecastMap[date] = {
                   date,
                   temperature: Math.round(item.main.temp),
@@ -29,7 +30,7 @@ export async function getForecastDetails(city: string) {
       });
 
       const processedData: ForecastData[] = Object.values(forecastMap);
-      return processedData.slice(0, 5);
+      return processedData.slice(0, days);
   } catch (err) {
       console.error('Error fetching the forecast data:', err);
       throw err;
@@ -37,6 +38,7 @@ export async function getForecastDetails(city: string) {
 }
 
 // FIXME: make the forecast days number adjustable variable - what if i want to display 7 days?
+// max 5 forecast days https://openweathermap.org/price 
 /**
  * Forecast component displays the weather forecast for 5 days.
  * 
