@@ -1,5 +1,5 @@
 import { DeleteCityButtonProps } from './FavoritesInterface';
-import { Box, Typography, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 
 
