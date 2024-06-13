@@ -34,11 +34,13 @@ const Weather: React.FC = () => {
         } catch (err) {
             if (err instanceof EmptyCityError) {
                 setError('City name cannot be empty!');
+            } else if (err instanceof Error) {
+                setError(err.message);
             } else {
-                setError('City not found!');
-                setWeatherData(null);
-                setForecastData(null);
+                setError('An unexpected error occurred');
             }
+            setWeatherData(null);
+            setForecastData(null);
         }
     };
 

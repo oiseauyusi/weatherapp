@@ -4,6 +4,7 @@ import './Forecast.css'
 import { ForecastProps } from './ForecastInterface'
 import { ForecastData } from '../Forecast/ForecastInterface';
 import axios from 'axios';
+import { WheatherApiDead } from '../CustomErrors';
 
 
 const config = require("../../config.json");
@@ -31,9 +32,29 @@ export async function getForecastDetails(city: string, days: number = 5) {
 
       const processedData: ForecastData[] = Object.values(forecastMap);
       return processedData.slice(0, days);
-  } catch (err) {
-      console.error('Error fetching the forecast data:', err);
-      throw err;
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        if (err.response) {
+            switch (err.response.status) {
+                case 400:
+                    throw new Error('400 Bad Request: The request was unacceptable.');
+                case 401:
+                    throw new Error('401 Unauthorized: Invalid API key.');
+                case 403:
+                    throw new Error('403 Forbidden: You do not have access to this resource.');
+                case 404:
+                    throw new Error('404 Not Found: The city was not found.');
+                case 500:
+                    throw new Error('500 Internal Server Error: Something went wrong on the server.');
+                default:
+                    throw new Error(`Unexpected error: ${err.response.status}`);
+              }
+            } else {
+              throw WheatherApiDead;
+          }
+      } else {
+          throw WheatherApiDead;
+      }
   }
 }
 

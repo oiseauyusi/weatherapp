@@ -16,18 +16,39 @@ export async function getWhetherDetails(city: string) {
 
     if (!city) {
         console.log(`Provided empty city!`)
-        throw EmptyCityError;
+        throw new Error('Provided empty city!')
     }
 
     try {
         console.log(`Getting whether information for city: '${city}'`)
         // FIXME: Change response when status code returned is >= 500 then return that wheather api is not working correctly when 400<=status<500 return correct responses (404, 400 etc)
+        // Done
         const response = await axios.get(`${weatherUrl}?q=${city}&appid=${apiKey}&units=metric`);
         console.log("status od response jest traki jak po prawej ---->", response.status)
         return response.data
     } catch (err) {
-        console.log(`Could not get response from wheter API due to error: ${err}`)
-        throw WheatherApiDead;
+        if (axios.isAxiosError(err)) {
+            if (err.response) {
+                switch (err.response.status) {
+                    case 400:
+                        throw new Error('400 Bad Request: The request was unacceptable.');
+                    case 401:
+                        throw new Error('401 Unauthorized: Invalid API key.');
+                    case 403:
+                        throw new Error('403 Forbidden: You do not have access to this resource.');
+                    case 404:
+                        throw new Error('404 Not Found: The city was not found.');
+                    case 500:
+                        throw new Error('500 Internal Server Error: Something went wrong on the server.');
+                    default:
+                        throw new Error(`Unexpected error: ${err.response.status}`);
+                }
+            } else {
+                throw WheatherApiDead;
+            }
+        } else {
+            throw WheatherApiDead;
+        }
     }
 }
 
